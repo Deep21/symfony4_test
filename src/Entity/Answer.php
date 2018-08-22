@@ -12,7 +12,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\AnswerRepository")
  * @ORM\Table(name="answers")
  */
 class Answer
@@ -27,12 +27,44 @@ class Answer
     /**
      * @ORM\Column(type="string")
      */
-    protected $wording;
+    private $wording;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWording()
+    {
+        return $this->wording;
+    }
+
+    /**
+     * @param mixed $wording
+     */
+    public function setWording($wording): void
+    {
+        $this->wording = $wording;
+    }
 
     /**
      * @ORM\ManyToOne(targetEntity=Question::class, inversedBy="answers")
      */
-    protected $question;
+    private $question;
 
     /**
      * @return mixed

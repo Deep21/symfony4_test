@@ -29,7 +29,7 @@ class Question
     /**
      * @ORM\Column(type="text")
      */
-    protected $wording;
+    private $wording;
 
     /**
      * @var Collection|Answer[] $users
@@ -54,5 +54,21 @@ class Question
     {
         $this->answers->add($answer);
         $answer->setQuestion($this);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWording()
+    {
+        return $this->wording;
+    }
+
+    /**
+     * @param mixed $wording
+     */
+    public function setWording($wording): void
+    {
+        $this->wording = $wording;
     }
 }
