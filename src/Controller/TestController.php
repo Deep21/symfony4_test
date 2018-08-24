@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Answer;
+use App\Entity\Manufacturer;
 use App\Entity\Question;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -25,8 +26,11 @@ class TestController extends AbstractController
      */
     public function getIndex()
     {
-        $answers = $this->getDoctrine()->getRepository(Answer::class)->getAnswer();
+        $c = $this->getDoctrine()->getRepository(Manufacturer::class)->findAll();
 
+        dump($c[0]->getAddress()[0]);
+        dump($c[0]->getAddress()[1]);
+        exit;
 
         return new JsonResponse($answers);
     }
