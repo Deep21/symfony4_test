@@ -71,4 +71,22 @@ class Question
     {
         $this->wording = $wording;
     }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function removeAnswer(Answer $answer): self
+    {
+        if ($this->answers->contains($answer)) {
+            $this->answers->removeElement($answer);
+            // set the owning side to null (unless already changed)
+            if ($answer->getQuestion() === $this) {
+                $answer->setQuestion(null);
+            }
+        }
+
+        return $this;
+    }
 }

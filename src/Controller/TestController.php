@@ -3,8 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Answer;
-use App\Entity\Manufacturer;
+use App\Entity\Order;
 use App\Entity\Question;
+use App\Entity\ShopGroup;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,10 +27,33 @@ class TestController extends AbstractController
      */
     public function getIndex()
     {
-        $c = $this->getDoctrine()->getRepository(Manufacturer::class)->findAll();
+        $s  = $this->getDoctrine()->getRepository(Order::class)->findAll();
+        dump($s);exit;
+//        $c2 = $this->getDoctrine()->getRepository(Customer::class)->find(2);
+//        dump($c[0]->getCustomer()->get(0)->getCompany());
 
-        dump($c[0]->getAddress()[0]);
-        dump($c[0]->getAddress()[1]);
+//        $c = new Customer();
+//        $c->setCompany("a");
+//        $c->setSiret("siret1");
+//        $c->setApe("ape1");
+//        $c->setFirstname("f1");
+//        $c->setLastname("l2");
+//        $c->setEmail("e1");
+//
+//        $c2 = new Customer();
+//        $c2->setCompany("a2");
+//        $c2->setSiret("siret2");
+//        $c2->setApe("ape2");
+//        $c2->setFirstname("f");
+//        $c2->setLastname("l2");
+//        $c2->setEmail("e2");
+//
+//
+//        $s->addCustomer($c);
+//        $s->addCustomer($c2);
+//
+//        $em->persist($s);
+//        $em->flush();
         exit;
 
         return new JsonResponse($answers);

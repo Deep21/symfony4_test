@@ -153,4 +153,17 @@ class Manufacturer
         $address->setCustomer($this);
     }
 
+    public function removeAddress(Address $address): self
+    {
+        if ($this->address->contains($address)) {
+            $this->address->removeElement($address);
+            // set the owning side to null (unless already changed)
+            if ($address->getManufacturer() === $this) {
+                $address->setManufacturer(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

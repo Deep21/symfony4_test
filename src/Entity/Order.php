@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,12 +10,23 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Order
 {
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Shop::class, inversedBy="shop")
+     */
+    private $shop;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Cart::class, inversedBy="cart")
+     */
+    private $cart;
 
     /**
      * @ORM\ManyToOne(targetEntity=Customer::class, inversedBy="order")

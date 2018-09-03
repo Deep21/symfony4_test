@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,6 +16,12 @@ class Cart
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @var Collection|Shop[] $order
+     * @ORM\OneToMany(targetEntity=Order::class, cascade={"persist", "remove"}, mappedBy="cart")
+     */
+    private $order;
 
     /**
      * @ORM\Column(type="boolean")
